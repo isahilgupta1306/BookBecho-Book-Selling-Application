@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -19,8 +20,9 @@ import com.google.firebase.auth.FirebaseUser;
 public class register extends AppCompatActivity {
 
     EditText name,emailid,passcode,confirmpassword;
-    Button register,gotologin;
+    Button register;
     FirebaseAuth fAuth;
+    TextView gotologin;
 
 
     @Override

@@ -10,8 +10,9 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="274dp"
+        android:scaleType="fitCenter"
         android:layout_height="179dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/ic_signupbanner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -25,13 +26,15 @@
         android:text="Create an Account"
         android:textAlignment="center"
         android:textColor="#252525"
-        android:textSize="28dp"
+
+        android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/outlinedTextField"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.423" />
+        app:layout_constraintVertical_bias="0.278" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlinedTextField"
@@ -49,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent=".85"
+        app:layout_constraintWidth_percent=".80"
         app:passwordToggleEnabled="false"
         app:startIconDrawable="@drawable/ic_user">
 
@@ -77,7 +80,7 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="10dp"
-        app:layout_constraintWidth_percent=".85"
+        app:layout_constraintWidth_percent=".80"
         app:passwordToggleEnabled="false"
         app:startIconDrawable="@drawable/ic_email_login">
 
@@ -104,7 +107,7 @@
         app:layout_constraintHorizontal_bias="0.491"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent=".85"
+        app:layout_constraintWidth_percent=".80"
         app:passwordToggleEnabled="true"
         app:startIconDrawable="@drawable/ic_password">
 
@@ -121,7 +124,7 @@
         android:layout_height="wrap_content"
         android:background="#FAFAFA"
         android:hint="Confirm Password"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="30dp"
         app:boxCornerRadiusBottomEnd="30dp"
         app:boxCornerRadiusBottomStart="30dp"
         app:boxCornerRadiusTopEnd="30dp"
@@ -130,7 +133,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent=".85"
+        app:layout_constraintWidth_percent=".80"
         app:passwordToggleEnabled="true"
         app:startIconDrawable="@drawable/ic_password">
 
@@ -150,6 +153,7 @@
         android:includeFontPadding="false"
         android:shadowRadius="12"
         android:text="Login"
+        android:clickable="true"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -157,17 +161,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent=".9" />
 
-    <Button
+    <TextView
         android:id="@+id/gotologin"
-        android:layout_width="386dp"
-        android:layout_height="59dp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:textAlignment="center"
+        android:gravity="center"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-        android:text="back to login"
+        android:clickable="true"
+        android:text="Already a User ? Login here"
+        android:textSize="15dp"
+        android:background="?selectableItemBackground"
+        android:textStyle="bold"
+        android:textColor="@color/primaryRed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
