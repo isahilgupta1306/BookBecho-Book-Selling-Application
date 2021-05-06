@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class login extends AppCompatActivity {
 
     Button loginButton;
-    TextInputEditText username,password;
+    EditText username,password;
     FirebaseAuth firebaseAuth;
     TextView forgot , createacc;
 
@@ -62,18 +62,31 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
                 // extraction and validation
-                if(username.getText().toString().isEmpty())
-                    username.setError("username invalid");
-                if(password.getText().toString().isEmpty())
-                    password.setError(("password invalid"));
+                String var1 = username.getText().toString();
+                String var2 = password.getText().toString();
                 // extraction and validation done
+                if(var1.isEmpty()) {
+                    username.setError("username invalid");
+                    return;
+                }
+
+                if(var2.isEmpty()) {
+                    password.setError(("password invalid"));
+                    return;
+                }
 
                 // user login
 
-                firebaseAuth.signInWithEmailAndPassword(username.getText().toString(),password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                firebaseAuth.signInWithEmailAndPassword(var1,var2).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+
                     @Override
                     public void onSuccess(AuthResult authResult) {
+//                        if(var1.isEmpty())
+//                            username.setError("username invalid");
+//                        if(var2.isEmpty())
+//                            password.setError("password invalid");
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                         if(user.isEmailVerified()) {
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
