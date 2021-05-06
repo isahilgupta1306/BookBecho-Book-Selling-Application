@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.EmailAuthentication" parent="Theme.MaterialComponents.NoActionBar">
-        <item name="android:forceDarkAllowed">false</item>
+<!--        <item name="android:forceDarkAllowed">false</item>-->
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primaryRed</item>
         <item name="colorPrimaryVariant">@color/DarkRed</item>
