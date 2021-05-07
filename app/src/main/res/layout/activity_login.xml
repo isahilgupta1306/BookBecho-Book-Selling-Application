@@ -26,7 +26,7 @@
         android:layout_marginTop="24dp"
         android:text="Welcome"
         android:textAlignment="center"
-        android:textColor="#252525"
+        android:textColor="@color/blackText"
         android:textSize="30dp"
         android:layout_marginBottom="12dp"
         android:textStyle="bold"
@@ -133,6 +133,7 @@
         android:text="Forgot password?"
         android:textSize="17dp"
         android:clickable="true"
+
         android:background="?selectableItemBackground"
         app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="@+id/passwordField"

@@ -7,4 +7,5 @@
     <color name="SimonPinkDark">#e7d4b5</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blackText">#252525</color>
 </resources>
