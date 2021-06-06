@@ -4,15 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home_fragment">
+    tools:context=".fragments.home_fragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="Home Page"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="40dp"-->
+<!--        />-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/product_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Home Page"
-        android:gravity="center"
-        android:textSize="40dp"
         />
 
 </FrameLayout>

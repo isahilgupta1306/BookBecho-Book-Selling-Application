@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="10dp"
+    app:cardCornerRadius="10dp"
+    android:padding="10dp"
+    android:layout_margin="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/prodImage"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <TextView
+            android:id="@+id/prodTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HC Verma-Physics"
+            android:textSize="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/prodImage"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/prodPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$29"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/prodDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.125"
+            app:layout_constraintStart_toEndOf="@+id/prodImage"
+            app:layout_constraintTop_toBottomOf="@+id/prodTitle"
+            app:layout_constraintVertical_bias="0.594" />
+
+        <TextView
+            android:id="@+id/prodDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The book is in mint \n condition"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/prodImage"
+            android:textSize="20dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

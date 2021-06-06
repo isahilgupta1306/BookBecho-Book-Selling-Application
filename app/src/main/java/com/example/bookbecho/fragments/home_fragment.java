@@ -1,12 +1,20 @@
-package com.example.bookbecho;
+package com.example.bookbecho.fragments;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.bookbecho.R;
+import com.example.bookbecho.adapters.productAdapterRV;
+import com.example.bookbecho.models.productDataModel;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +31,11 @@ public class home_fragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    //My Declarations
+    RecyclerView recyclerView;
+    ArrayList<productDataModel> productDataHolder;
+    String dummyString;
+
 
     public home_fragment() {
         // Required empty public constructor
@@ -59,6 +72,30 @@ public class home_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        recyclerView = view.findViewById(R.id.product_rv);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        productDataHolder = new ArrayList<>();
+
+        dummyString = "The book is in mint \n condition" ;
+        //initializing new dummy model
+
+        productDataModel obj1 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
+        productDataHolder.add(obj1);
+
+        productDataModel obj2 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
+        productDataHolder.add(obj2);
+
+        productDataModel obj3 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
+        productDataHolder.add(obj3);
+
+        productDataModel obj4 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
+        productDataHolder.add(obj4);
+
+        productDataModel obj5 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
+        productDataHolder.add(obj5);
+
+        recyclerView.setAdapter(new productAdapterRV(productDataHolder));
+        return view;
     }
 }
