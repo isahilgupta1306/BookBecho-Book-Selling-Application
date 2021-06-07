@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.home :
                         tempFrag = new home_fragment();
                         drawerLayout.closeDrawer(GravityCompat.START);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout , tempFrag).commit();
                         break;
                     case R.id.profile :
                          //tempFrag = new home_fragment();    //for adding new fragPiece
@@ -70,11 +71,12 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.logout :
                         drawerLayout.closeDrawer(GravityCompat.START);
                         FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(getApplicationContext(), login.class));
+                        Intent intent = new Intent(getApplicationContext(), login.class);
+                        startActivity(intent);
                         finish();
                         break;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout , tempFrag).commit();
+
                 return true;
             }
         });
