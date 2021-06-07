@@ -11,8 +11,12 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
+import com.example.bookbecho.fragments.cart;
 import com.example.bookbecho.fragments.home_fragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navview;
     ActionBarDrawerToggle drawerToggle;
     DrawerLayout drawerLayout;
+    MenuItem menuItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 //        logOut = findViewById(R.id.logout);
+
         auth = FirebaseAuth.getInstance();
         navview =(NavigationView)findViewById(R.id.nav_menu);
         myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -72,10 +78,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-//        logOut.setOnClickListener(new View.OnClickListener() {
+        //        logOut.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
 //                FirebaseAuth.getInstance().signOut();
@@ -85,7 +88,15 @@ public class MainActivity extends AppCompatActivity {
 //        });
     }
 
-
+    public void onClickAddProduct(MenuItem menuItem) {
+        Intent i1 = new Intent(getApplicationContext() , product_form.class);
+        startActivity(i1);
+    }
+    public  void onClickAddToCart(MenuItem menuItem){
+        Fragment tempFrag;
+        tempFrag = new cart();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout , tempFrag).commit();
+    }
 
 
 }

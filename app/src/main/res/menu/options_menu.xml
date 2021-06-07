@@ -8,6 +8,8 @@
         android:title="Add Product"
         app:showAsAction="always|withText"
         android:visible="true"
+        android:onClick="onClickAddProduct"
+
         />
     <item
         android:id="@+id/cart"
@@ -15,5 +17,6 @@
         android:title="Your Cart"
         app:showAsAction="always"
         android:visible="true"
+        android:onClick="onClickAddToCart"
         />
 </menu>

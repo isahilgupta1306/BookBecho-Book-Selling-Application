@@ -10,16 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EmailAuthentication">
-        <activity android:name="com.example.bookbecho.forgotPassword"></activity>
-        <activity android:name="com.example.bookbecho.register" />
-        <activity android:name="com.example.bookbecho.login">
+        <activity android:name=".product_form"></activity>
+        <activity android:name=".forgotPassword" />
+        <activity android:name=".register" />
+        <activity android:name=".login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.bookbecho.MainActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
