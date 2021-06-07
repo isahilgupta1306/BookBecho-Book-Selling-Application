@@ -15,15 +15,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <androidx.coordinatorlayout.widget.CoordinatorLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+
 
             <!-- We use a Toolbar so that our drawer can be displayed
                  in front of the action bar -->
-            <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/my_toolbar"
                     android:layout_height="wrap_content"
@@ -31,21 +26,15 @@
                     android:minHeight="?attr/actionBarSize"
                     android:background="?attr/colorPrimary"
                     app:title="BookBecho"
-                    app:titleTextColor="@color/white"/>
-<!--                    app:layout_scrollFlags="scroll|enterAlways"-->
-
-
-            </com.google.android.material.appbar.AppBarLayout>
-
+                    app:menu="@menu/options_menu"
+                    app:titleTextColor="@color/white"
+                    />
 
             <!-- The rest of your content view -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/frameLayout"/>
-<!--                android:layout_marginTop="57dp"-->
-
-            </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         </RelativeLayout>
 
