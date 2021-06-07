@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.bookbecho.fragments.addProductForm;
 import com.example.bookbecho.fragments.cart;
 import com.example.bookbecho.fragments.home_fragment;
 import com.google.android.material.navigation.NavigationView;
@@ -89,8 +90,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickAddProduct(MenuItem menuItem) {
-        Intent i1 = new Intent(getApplicationContext() , product_form.class);
-        startActivity(i1);
+        Fragment tempFrag;
+        tempFrag = new addProductForm();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout , tempFrag).commit();
     }
     public  void onClickAddToCart(MenuItem menuItem){
         Fragment tempFrag;

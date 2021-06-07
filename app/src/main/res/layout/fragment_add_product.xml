@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.addProductForm"
+    android:layout_marginTop="55dp">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:background="#FAFAFA"
+            android:hint="Product Title"
+            android:layout_margin="20dp"
+            app:passwordToggleEnabled="false"
+            app:startIconDrawable="@drawable/ic_email_login">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailaddress"
+                android:layout_width="match_parent"
+                android:layout_height="61dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    </LinearLayout>
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="Add Your Product"-->
+<!--        android:textSize="40dp"-->
+<!--        android:textColor="@color/blackText"-->
+<!--        android:fontFamily="@font/bold"-->
+<!--        android:gravity="center"/>-->
+
+
+</FrameLayout>
