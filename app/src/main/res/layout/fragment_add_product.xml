@@ -8,9 +8,12 @@
     android:layout_marginTop="55dp">
 
     <!-- TODO: Update blank fragment layout -->
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField"
@@ -25,11 +28,73 @@
             app:startIconDrawable="@drawable/ic_email_login">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emailaddress"
+                android:id="@+id/prod_title"
                 android:layout_width="match_parent"
                 android:layout_height="61dp" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlineTextField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:background="#FAFAFA"
+            android:hint="Product Description"
+            android:layout_margin="20dp"
+            app:passwordToggleEnabled="false"
+            app:startIconDrawable="@drawable/ic_email_login">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/prod_desc"
+                android:layout_width="match_parent"
+                android:layout_height="61dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinTextField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:background="#FAFAFA"
+            android:hint="Product Price"
+            android:layout_margin="20dp"
+            app:passwordToggleEnabled="false"
+            app:startIconDrawable="@drawable/ic_email_login">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:inputType="number"
+                android:layout_height="61dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/add_product_photo"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:layout_margin="20dp"
+                android:text="@string/add_input"
+                />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/product_photo"
+                android:layout_width="match_parent"
+                android:inputType="number"
+                android:layout_height="80dp"
+                android:layout_margin="20dp"
+                />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/submit"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_margin="20dp"
+            android:text="@string/add_product"
+            />
 
 
     </LinearLayout>
@@ -42,6 +107,7 @@
 <!--        android:textColor="@color/blackText"-->
 <!--        android:fontFamily="@font/bold"-->
 <!--        android:gravity="center"/>-->
+
 
 
 </FrameLayout>
