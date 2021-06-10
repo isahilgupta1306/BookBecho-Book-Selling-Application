@@ -79,6 +79,7 @@
                 android:layout_height="60dp"
                 android:layout_margin="20dp"
                 android:text="@string/add_input"
+                android:drawableStart="@drawable/ic_add"
                 />
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/product_photo"

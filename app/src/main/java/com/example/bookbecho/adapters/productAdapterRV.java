@@ -9,17 +9,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.bookbecho.R;
 import com.example.bookbecho.models.productDataModel;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class productAdapterRV extends RecyclerView.Adapter<productAdapterRV.myViewHolder>{
+public class productAdapterRV extends FirebaseRecyclerAdapter< productDataModel,productAdapterRV.myViewHolder> {
 
-    ArrayList<productDataModel> dataHolder;
+//    ArrayList<productDataModel> dataHolder;
 
-    public productAdapterRV(ArrayList<productDataModel> dataHolder) {
-        this.dataHolder = dataHolder;
+
+    public productAdapterRV(@NonNull @NotNull FirebaseRecyclerOptions<productDataModel> options) {
+        super(options);
     }
 
     @NonNull
@@ -30,18 +36,16 @@ public class productAdapterRV extends RecyclerView.Adapter<productAdapterRV.myVi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull  productAdapterRV.myViewHolder holder, int position) {
-        holder.productImage.setImageResource(dataHolder.get(position).getProductImage());
-        holder.productPrice.setText(dataHolder.get(position).getProductPrice());
-        holder.productDescription.setText(dataHolder.get(position).getProductDescription());
-        holder.productTitle.setText(dataHolder.get(position).getProductTitle());
+    public void onBindViewHolder(@NonNull  myViewHolder holder, int position , productDataModel model) {
+//        holder.productImage.setImageResource(model.getProductImage());
+        holder.productPrice.setText(model.getPrice());
+        holder.productDescription.setText(model.getDescription());
+        holder.productTitle.setText(model.getTitle());
+        Glide.with(holder.productImage.getContext()).load(model.getPhoto()).into(holder.productImage);
 
     }
 
-    @Override
-    public int getItemCount() {
-        return dataHolder.size();
-    }
+
 
     class myViewHolder extends RecyclerView.ViewHolder{
 

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,6 +17,8 @@ import android.view.ViewGroup;
 import com.example.bookbecho.R;
 import com.example.bookbecho.adapters.productAdapterRV;
 import com.example.bookbecho.models.productDataModel;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -25,6 +28,8 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class home_fragment extends Fragment {
+
+
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
@@ -43,6 +48,18 @@ public class home_fragment extends Fragment {
     RecyclerView recyclerView;
     ArrayList<productDataModel> productDataHolder;
     String dummyString;
+    productAdapterRV adapter;
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
 
 
     public home_fragment() {
@@ -80,6 +97,7 @@ public class home_fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -90,24 +108,39 @@ public class home_fragment extends Fragment {
         dummyString = "The book is in mint \n condition" ;
         //initializing new dummy model
 
-        productDataModel obj1 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
-        productDataHolder.add(obj1);
+//        productDataModel obj1 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
+//        productDataHolder.add(obj1);
+//
+//        productDataModel obj2 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
+//        productDataHolder.add(obj2);
+//
+//        productDataModel obj3 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
+//        productDataHolder.add(obj3);
+//
+//        productDataModel obj4 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
+//        productDataHolder.add(obj4);
+//
+//        productDataModel obj5 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
+//        productDataHolder.add(obj5);
 
-        productDataModel obj2 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
-        productDataHolder.add(obj2);
 
-        productDataModel obj3 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
-        productDataHolder.add(obj3);
 
-        productDataModel obj4 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
-        productDataHolder.add(obj4);
+        FirebaseRecyclerOptions<productDataModel> prodData =
+                new FirebaseRecyclerOptions.Builder<productDataModel>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Products"), productDataModel.class)
+                        .build();
 
-        productDataModel obj5 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
-        productDataHolder.add(obj5);
 
-        recyclerView.setAdapter(new productAdapterRV(productDataHolder));
+
+        adapter = new productAdapterRV(prodData);
+        recyclerView.setAdapter(adapter);
+
+
         return view;
+
     }
+
+
 
 
 }

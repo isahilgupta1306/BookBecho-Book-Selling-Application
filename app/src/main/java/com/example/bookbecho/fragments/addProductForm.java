@@ -135,7 +135,7 @@ public class addProductForm extends Fragment {
 
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable  Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode==ImageBack && resultCode == RESULT_OK && data!=null){
@@ -191,7 +191,4 @@ public class addProductForm extends Fragment {
 
         }
     }
-
-
-
 }

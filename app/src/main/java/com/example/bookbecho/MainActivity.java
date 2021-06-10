@@ -21,9 +21,12 @@ import com.example.bookbecho.fragments.cart;
 import com.example.bookbecho.fragments.home_fragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
-//    Button logOut;
+
+    private  String baseUrl = "https://emailauthentication-72f49-default-rtdb.firebaseio.com/" ;
     FirebaseAuth auth;
     Toolbar myToolbar;
     NavigationView navview;
@@ -44,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
         myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         setSupportActionBar(myToolbar);
+
+
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance(baseUrl);
+        DatabaseReference myRef = database.getReference("message");
+
+        myRef.setValue("Hello, World!");
 
 
         drawerToggle = new ActionBarDrawerToggle(this , drawerLayout , myToolbar , R.string.open , R.string.close );
@@ -80,15 +90,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        //        logOut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                FirebaseAuth.getInstance().signOut();
-//                startActivity(new Intent(getApplicationContext(), login.class));
-//                finish();
-//            }
-//        });
     }
 
     public void onClickAddProduct(MenuItem menuItem) {
