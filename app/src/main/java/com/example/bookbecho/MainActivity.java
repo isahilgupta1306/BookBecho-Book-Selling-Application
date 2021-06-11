@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.bookbecho.fragments.addProductForm;
 import com.example.bookbecho.fragments.cart;
 import com.example.bookbecho.fragments.home_fragment;
+import com.example.bookbecho.fragments.myOrders;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -74,9 +75,10 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout , tempFrag).commit();
                         break;
-                    case R.id.profile :
-                         //tempFrag = new home_fragment();    //for adding new fragPiece
+                    case R.id.productHistory:
+                         tempFrag = new myOrders();    //for adding new fragPiece
                         drawerLayout.closeDrawer(GravityCompat.START);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout , tempFrag).commit();
                         break;
                     case R.id.logout :
                         drawerLayout.closeDrawer(GravityCompat.START);
