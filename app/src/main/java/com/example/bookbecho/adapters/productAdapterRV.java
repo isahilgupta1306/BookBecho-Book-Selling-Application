@@ -1,5 +1,7 @@
 package com.example.bookbecho.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,11 +9,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.bookbecho.MainActivity;
 import com.example.bookbecho.R;
+import com.example.bookbecho.fragments.addProductForm;
 import com.example.bookbecho.models.productDataModel;
+import com.example.bookbecho.productDetails;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
@@ -22,6 +28,7 @@ import java.util.ArrayList;
 public class productAdapterRV extends FirebaseRecyclerAdapter< productDataModel,productAdapterRV.myViewHolder> {
 
 //    ArrayList<productDataModel> dataHolder;
+
 
 
     public productAdapterRV(@NonNull @NotNull FirebaseRecyclerOptions<productDataModel> options) {
@@ -43,6 +50,15 @@ public class productAdapterRV extends FirebaseRecyclerAdapter< productDataModel,
         holder.productTitle.setText(model.getTitle());
         Glide.with(holder.productImage.getContext()).load(model.getPhoto()).into(holder.productImage);
 
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( holder.cardView.getContext(), productDetails.class);
+                intent.putExtra("key" , getRef(position).getKey());
+                holder.cardView.getContext().startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -51,6 +67,7 @@ public class productAdapterRV extends FirebaseRecyclerAdapter< productDataModel,
 
     ImageView productImage;
     TextView productTitle , productDescription , productPrice ;
+    CardView cardView;
 
 
         public myViewHolder(@NonNull View itemView) {
@@ -60,6 +77,7 @@ public class productAdapterRV extends FirebaseRecyclerAdapter< productDataModel,
             productTitle = itemView.findViewById(R.id.prodTitle);
             productDescription = itemView.findViewById(R.id.prodDescription);
             productPrice = itemView.findViewById(R.id.prodPrice);
+            cardView = itemView.findViewById(R.id.cardView);
         }
     }
 }

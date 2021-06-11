@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.EmailAuthentication" parent="Theme.MaterialComponents.Light.NoActionBar">
 
-<!--        <item name="android:forceDarkAllowed">false</item>-->
+        <!--        <item name="android:forceDarkAllowed">false</item>-->
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primaryRed</item>
         <item name="colorPrimaryVariant">@color/DarkRed</item>
@@ -16,7 +16,35 @@
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/font_family</item>
     </style>
-<!--    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="Theme.MaterialComponents.NoActionBar">-->
-<!--        <item name="cornerSize">50%</item>-->
-<!--    </style>-->
+
+    <style name="Theme.EmailAuthentication.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.EmailAuthentication.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.EmailAuthentication.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <!--    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="Theme.MaterialComponents.NoActionBar">-->
+    <!--        <item name="cornerSize">50%</item>-->
+    <!--    </style>-->
+    <style name="ExpandedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:shadowRadius">10</item>
+        <item name="android:shadowDx">6</item>
+        <item name="android:shadowDy">6</item>
+        <item name="android:shadowColor">@color/blackText</item>
+        <item name="android:textStyle">bold</item>
+        <item name="font">@font/bold</item>
+        <item name="android:elevation">30dp</item>
+    </style>
+
+    <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">normal</item>
+
+        <item name="android:shadowColor">@color/blackText</item>
+    </style>
 </resources>
