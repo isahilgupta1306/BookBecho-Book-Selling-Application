@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
             app:contentScrim="@color/DarkRed"
-            app:title="Products"
+
             app:titleTextColor="@color/white"
             app:expandedTitleTextAppearance="@style/ExpandedAppBar"
             app:collapsedTitleTextAppearance="@style/CollapsedAppBar"
