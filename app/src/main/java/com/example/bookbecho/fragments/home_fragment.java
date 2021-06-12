@@ -49,6 +49,7 @@ public class home_fragment extends Fragment {
     ArrayList<productDataModel> productDataHolder;
     String dummyString;
     productAdapterRV adapter;
+    LinearLayoutManager linearLayoutManager;
 
     @Override
     public void onStop() {
@@ -102,10 +103,11 @@ public class home_fragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = view.findViewById(R.id.product_rv);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        productDataHolder = new ArrayList<>();
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
-        dummyString = "The book is in mint \n condition" ;
         //initializing new dummy model
 
 //        productDataModel obj1 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");

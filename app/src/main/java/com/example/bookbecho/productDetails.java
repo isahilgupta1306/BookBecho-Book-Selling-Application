@@ -67,7 +67,7 @@ public class productDetails extends AppCompatActivity {
 
                     title.setText(productTitle);
                     description.setText(productDescription);
-                    price.setText(productPrice);
+                    price.setText("₹"+ productPrice);
 
                     Glide.with(productImage.getContext()).load(productImageUrl).into(productImage);
                 }

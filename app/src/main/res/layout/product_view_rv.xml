@@ -7,17 +7,17 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:clickable="true"
-    android:elevation="15dp"
+    android:elevation="20dp"
     app:cardCornerRadius="10dp"
-    android:padding="5dp"
     android:layout_marginTop="5dp"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
     android:layout_marginBottom="5dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
         >
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -27,52 +27,58 @@
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/prodTitle"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="HC Verma \nPhysics"
-            android:textColor="@color/blackText"
-            android:fontFamily="@font/bold"
-            android:textSize="28dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="6dp">
 
-            app:layout_constraintStart_toEndOf="@+id/prodImage"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            <TextView
+                android:id="@+id/prodTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/bold"
+                android:gravity="start"
+                android:maxLines="2"
+                android:singleLine="false"
+                android:text="HC Verma Physics"
+                android:textColor="@color/blackText"
+                android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/prodPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$29"
-            android:textSize="20dp"
-            android:fontFamily="@font/medium"
-            android:textColor="@color/DarkRed"
-            android:shadowDy="10"
-            android:shadowDx="10"
-            android:shadowRadius="10"
-            app:layout_constraintBottom_toTopOf="@+id/prodDescription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.125"
-            app:layout_constraintStart_toEndOf="@+id/prodImage"
-            app:layout_constraintTop_toBottomOf="@+id/prodTitle"
-            app:layout_constraintVertical_bias="0.594" />
+            <TextView
+                android:id="@+id/prodPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium"
+                android:gravity="start"
+                android:text="$29"
+                android:textColor="@color/DarkRed"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/prodDescription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.125"
+                app:layout_constraintStart_toEndOf="@+id/prodImage"
+                app:layout_constraintTop_toBottomOf="@+id/prodTitle"
+                app:layout_constraintVertical_bias="0.594" />
 
-        <TextView
-            android:id="@+id/prodDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="The book is in mint \n condition"
-            android:fontFamily="@font/italic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/prodImage"
-            android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/prodDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/italic"
+                android:gravity="start"
+                android:lines="4"
+                android:singleLine="false"
+                android:text="The book is in mint \n condition"
+                android:textSize="18dp"
+                android:maxLines="4"/>
 
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.cardview.widget.CardView>

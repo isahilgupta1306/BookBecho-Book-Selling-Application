@@ -45,7 +45,7 @@ public class productAdapterRV extends FirebaseRecyclerAdapter< productDataModel,
     @Override
     public void onBindViewHolder(@NonNull  myViewHolder holder, int position , productDataModel model) {
 //        holder.productImage.setImageResource(model.getProductImage());
-        holder.productPrice.setText(model.getPrice());
+        holder.productPrice.setText("₹"+model.getPrice());
         holder.productDescription.setText(model.getDescription());
         holder.productTitle.setText(model.getTitle());
         Glide.with(holder.productImage.getContext()).load(model.getPhoto()).into(holder.productImage);
