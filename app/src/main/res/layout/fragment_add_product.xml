@@ -5,101 +5,149 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.addProductForm"
-    android:layout_marginTop="55dp">
+    android:layout_marginTop="55dp"
+    android:background="@color/dimWhite"
+    >
 
     <!-- TODO: Update blank fragment layout -->
 
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
-            android:background="#FAFAFA"
-            android:hint="Product Title"
-            android:layout_margin="20dp"
-            app:passwordToggleEnabled="false"
-            app:startIconDrawable="@drawable/ic_email_login">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/prod_title"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/outlinedTextField"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="61dp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlineTextField"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
-            android:background="#FAFAFA"
-            android:hint="Product Description"
-            android:layout_margin="20dp"
-            app:passwordToggleEnabled="false"
-            app:startIconDrawable="@drawable/ic_email_login">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/prod_desc"
-                android:layout_width="match_parent"
-                android:layout_height="61dp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinTextField"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
-            android:background="#FAFAFA"
-            android:hint="Product Price"
-            android:layout_margin="20dp"
-            app:passwordToggleEnabled="false"
-            app:startIconDrawable="@drawable/ic_email_login">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/price"
-                android:layout_width="match_parent"
-                android:inputType="number"
-                android:layout_height="61dp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/add_product_photo"
-                android:layout_width="160dp"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
+                android:background="#FAFAFA"
+                android:hint="Product Title"
+                app:boxCornerRadiusBottomEnd="28dp"
+                app:boxCornerRadiusBottomStart="28dp"
+                app:boxCornerRadiusTopEnd="28dp"
+                app:boxCornerRadiusTopStart="28dp"
                 android:layout_margin="20dp"
-                android:text="@string/add_input"
-                android:drawableStart="@drawable/ic_add"
-                />
+                app:passwordToggleEnabled="false"
+                app:startIconTint="@color/DarkRed"
+                app:startIconDrawable="@drawable/ic_right">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/prod_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="61dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/outlineTextField"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:background="#FAFAFA"
+                app:boxCornerRadiusBottomEnd="28dp"
+                app:boxCornerRadiusBottomStart="28dp"
+                app:boxCornerRadiusTopEnd="28dp"
+                app:boxCornerRadiusTopStart="28dp"
+                android:hint="Product Description"
+                app:startIconTint="@color/DarkRed"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:passwordToggleEnabled="false"
+                app:startIconDrawable="@drawable/ic_edit"
+                app:counterEnabled="true"
+                app:counterMaxLength="50">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/prod_desc"
+                    android:layout_width="match_parent"
+                    android:maxLines="3"
+                    android:lines="3"
+                    android:singleLine="false"
+                    android:layout_height="match_parent" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/outlinTextField"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:background="#FAFAFA"
+                    android:hint="Product Price"
+                    app:boxCornerRadiusBottomEnd="28dp"
+                    app:boxCornerRadiusBottomStart="28dp"
+                    app:boxCornerRadiusTopEnd="28dp"
+                    app:boxCornerRadiusTopStart="28dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    app:passwordToggleEnabled="false"
+                    app:startIconDrawable="@drawable/ic_price"
+                    app:startIconTint="@color/DarkRed">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/price"
+                        android:layout_width="match_parent"
+                        android:inputType="number"
+                        android:layout_height="61dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/add_product_photo"
+                    android:layout_width="160dp"
+                    android:layout_height="60dp"
+                    android:text="@string/add_input"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="?selectableItemBackground"
+                    app:strokeColor="@color/browser_actions_bg_grey"
+                    app:strokeWidth="1dp"
+                    app:icon="@drawable/ic_add_photo"
+                    app:iconTint="@color/DarkRed"
+                    android:textColor="@color/DarkRed"
+
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/product_photo"
                 android:layout_width="match_parent"
-                android:inputType="number"
-                android:layout_height="80dp"
+                android:layout_height="200dp"
                 android:layout_margin="20dp"
+                android:scaleType="centerCrop"
+                android:outlineAmbientShadowColor="@color/blackText"
+                android:src="@drawable/photo_preview"
+
                 />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/submit"
-            android:layout_width="160dp"
-            android:layout_height="60dp"
-            android:layout_margin="20dp"
-            android:text="@string/add_product"
-            />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/add_product"
+                app:icon="@drawable/ic_shopping_bag"
+                android:layout_gravity="bottom|center_horizontal"
+                app:cornerRadius="20dp"
+                android:shadowColor="@color/blackText"
+                android:elevation="25px"
+                />
 
 
-    </LinearLayout>
-
+        </LinearLayout>
+    </ScrollView>
 <!--    <TextView-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"-->

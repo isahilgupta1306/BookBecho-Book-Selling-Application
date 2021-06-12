@@ -2,6 +2,7 @@ package com.example.bookbecho.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.security.Timestamp;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.HashMap;
 
 import static android.app.Activity.RESULT_OK;
@@ -86,10 +91,11 @@ public class addProductForm extends Fragment {
     private DatabaseReference root = db.getReference().child("Products");
     private StorageReference folder = FirebaseStorage.getInstance().getReference().child("Images");
     private TextInputEditText prodTitle, prodDesc, prodPrice;
+    private String prodId;
     String imageStorageUrl = null;
     ProgressDialog progressDialog;
-
     String title, description, price;
+
 
     private static final int ImageBack = 1;
 
@@ -154,6 +160,10 @@ public class addProductForm extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String userId = user.getUid();
 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
+        String format = simpleDateFormat.format(new Date());
+        prodId = format;
+
         if (imageUri == null) {
             Toast.makeText(getContext(), "Please add image", Toast.LENGTH_SHORT).show();
         } else if(TextUtils.isEmpty(description) || TextUtils.isEmpty(title) ||TextUtils.isEmpty(price)){
@@ -176,6 +186,7 @@ public class addProductForm extends Fragment {
                             prodMap.put("photo", imageStorageUrl);
                             prodMap.put("user", userId);
                             prodMap.put("sold", "null");
+                            prodMap.put("prodID", prodId);
 
                             root.push().setValue(prodMap);
                             progressDialog.dismiss();

@@ -22,9 +22,10 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/productImage"
                 android:layout_width="match_parent"
-                android:layout_height="380dp"
+                android:layout_height="360dp"
                 android:src="@drawable/dummy_image"
                 android:scaleType="centerCrop"
+
                 />
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -43,7 +44,7 @@
                     android:singleLine="false"
                     android:maxLines="2"
                     android:layout_marginTop="0dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginBottom="8dp"
                     />
 
@@ -57,7 +58,7 @@
                     android:textColor="@color/DarkRed"
                     android:textSize="38sp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -67,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/medium"
                 android:text="Product Description"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:singleLine="false"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -96,6 +97,7 @@
                 android:layout_marginTop="4dp"
                 android:text="Add to Cart"
                 android:clickable="true"
+                android:focusable="true"
                 app:iconGravity="textStart"
                 app:rippleColor="@color/DarkRed"
                 android:elevation="0dp"
@@ -131,6 +133,9 @@
                 android:elevation="10dp"
                 android:fontFamily="@font/bold"
                 app:cornerRadius="18dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="400dp"/>
 
 
 

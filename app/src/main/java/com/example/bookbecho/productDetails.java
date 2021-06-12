@@ -32,7 +32,7 @@ public class productDetails extends AppCompatActivity {
     DatabaseReference database;
     String productDescription , productTitle , productPrice , productImageUrl;
     MaterialTextView description , price , title ;
-    MaterialButton addToCart , buyNow;
+    MaterialButton addToCart , buyNow , chatWithSeller;
     ImageView productImage;
 
 
@@ -49,6 +49,7 @@ public class productDetails extends AppCompatActivity {
 
         addToCart = (MaterialButton)findViewById(R.id.addtoCart);
         buyNow = (MaterialButton)findViewById(R.id.buyButton);
+        chatWithSeller = (MaterialButton)findViewById(R.id.chatwithuser);
 
         productImage = (ImageView)findViewById(R.id.productImage);
 
@@ -64,11 +65,9 @@ public class productDetails extends AppCompatActivity {
                     productPrice = snapshot.child("price").getValue().toString();
 
                     //Setting the values to widget
-
                     title.setText(productTitle);
                     description.setText(productDescription);
                     price.setText("₹"+ productPrice);
-
                     Glide.with(productImage.getContext()).load(productImageUrl).into(productImage);
                 }
             }

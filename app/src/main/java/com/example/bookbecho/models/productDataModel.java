@@ -2,7 +2,22 @@ package com.example.bookbecho.models;
 
 public class productDataModel {
 
-    String title , description , price , photo , user , sold;
+    String title;
+    String description;
+    String price;
+    String photo;
+    String user;
+    String sold;
+
+    public String getProdID() {
+        return prodID;
+    }
+
+    public void setProdID(String prodID) {
+        this.prodID = prodID;
+    }
+
+    String prodID;
 
     public String getSold() {
         return sold;
@@ -12,13 +27,14 @@ public class productDataModel {
         this.sold = sold;
     }
 
-    public productDataModel(String title, String description, String price, String photo, String user) {
+    public productDataModel(String title, String description, String price, String photo, String user , String prodID) {
         this.title = title;
         this.description = description;
         this.price = price;
         this.photo = photo;
         this.user = user;
         this.sold = sold;
+        this.prodID = prodID;
     }
     public productDataModel(){};
 
@@ -61,56 +77,4 @@ public class productDataModel {
     public void setUser(String user) {
         this.user = user;
     }
-    //    String productTitle , productDescription;
-//    String productPrice;
-//    String productImageUrl;
-//
-//    public String getProductImageUrl() {
-//        return productImageUrl;
-//    }
-//
-//    public void setProductImageUrl(String productImageUrl) {
-//        this.productImageUrl = productImageUrl;
-//    }
-//
-////    public int getProductImage() {
-////        return productImage;
-////    }
-////
-////    public void setProductImage(int productImage) {
-////        this.productImage = productImage;
-////    }
-//
-//    public String getProductTitle() {
-//        return productTitle;
-//    }
-//
-//    public void setProductTitle(String productTitle) {
-//        this.productTitle = productTitle;
-//    }
-//
-//    public String getProductDescription() {
-//        return productDescription;
-//    }
-//
-//    public void setProductDescription(String productDescription) {
-//        this.productDescription = productDescription;
-//    }
-//
-//    public String getProductPrice() {
-//        return productPrice;
-//    }
-//
-//    public void setProductPrice(String productPrice) {
-//        this.productPrice = productPrice;
-//    }
-//
-//
-//    public productDataModel( String productTitle, String productDescription, String productPrice , String productImageUrl ) {
-////        this.productImage = productImage;
-//        this.productTitle = productTitle;
-//        this.productDescription = productDescription;
-//        this.productPrice = productPrice;
-//        this.productImageUrl = productImageUrl;
-//    }
 }

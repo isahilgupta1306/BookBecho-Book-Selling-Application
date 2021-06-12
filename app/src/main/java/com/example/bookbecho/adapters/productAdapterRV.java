@@ -2,6 +2,7 @@ package com.example.bookbecho.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +11,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.bookbecho.MainActivity;
 import com.example.bookbecho.R;
 import com.example.bookbecho.fragments.addProductForm;
+import com.example.bookbecho.fragments.cart;
 import com.example.bookbecho.models.productDataModel;
 import com.example.bookbecho.productDetails;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -26,8 +29,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class productAdapterRV extends FirebaseRecyclerAdapter< productDataModel,productAdapterRV.myViewHolder> {
+    private String nodekey;
 
-//    ArrayList<productDataModel> dataHolder;
+
 
 
 
@@ -44,7 +48,7 @@ public class productAdapterRV extends FirebaseRecyclerAdapter< productDataModel,
 
     @Override
     public void onBindViewHolder(@NonNull  myViewHolder holder, int position , productDataModel model) {
-//        holder.productImage.setImageResource(model.getProductImage());
+
         holder.productPrice.setText("₹"+model.getPrice());
         holder.productDescription.setText(model.getDescription());
         holder.productTitle.setText(model.getTitle());
@@ -58,7 +62,12 @@ public class productAdapterRV extends FirebaseRecyclerAdapter< productDataModel,
                 holder.cardView.getContext().startActivity(intent);
             }
         });
-
+        nodekey = getRef(position).getKey();
+        Bundle bundle = new Bundle();
+        bundle.putString("edttext", "From Activity");
+// set Fragmentclass Arguments
+        Fragment fragobj = new cart();
+        fragobj.setArguments(bundle);
     }
 
 
