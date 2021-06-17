@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,7 +26,8 @@ public class register extends AppCompatActivity {
     EditText name,emailid,passcode,confirmpassword;
     Button register;
     FirebaseAuth fAuth;
-    TextView gotologin;
+    MaterialButton gotologin;
+    AutoCompleteTextView collegename;
 
 
 
@@ -40,6 +44,14 @@ public class register extends AppCompatActivity {
         confirmpassword = findViewById(R.id.confrimpassword);
         register = findViewById(R.id.register);
         gotologin = findViewById(R.id.gotologin);
+        collegename = (AutoCompleteTextView)findViewById(R.id.collegename);
+
+        //For AutoComplete
+        String[] colleges = getResources().getStringArray(R.array.colleges);
+        // Create the adapter and set it to the AutoCompleteTextView
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, colleges);
+        collegename.setAdapter(adapter);
 
         fAuth = FirebaseAuth.getInstance();
 

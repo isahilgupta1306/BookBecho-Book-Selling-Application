@@ -134,8 +134,101 @@
                 android:fontFamily="@font/bold"
                 app:cornerRadius="18dp"/>
             <View
+                android:layout_margin="8dp"
+                android:layout_width="260dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@android:color/darker_gray"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="400dp"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    >
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:src="@drawable/ic_university"
+                        android:layout_gravity="center"
+                        android:layout_margin="20dp"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:fontFamily="@font/bold"
+                        android:textSize="24sp"
+                        android:textColor="@color/blackText"
+                        android:text="College"
+                        />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/collegeName"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:fontFamily="@font/medium"
+                        android:textSize="18sp"
+                        android:textColor="@color/DarkRed"
+                        android:text="MIT ADT"
+                        android:background="?selectableItemBackground"
+                        android:maxLines="3"
+                        android:singleLine="false"
+                        android:drawableTop="@drawable/ic_outline_college"
+                        />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    >
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:src="@drawable/ic_student"
+                        android:layout_gravity="center"
+                        android:layout_margin="20dp"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:fontFamily="@font/bold"
+                        android:textSize="24sp"
+                        android:textColor="@color/blackText"
+                        android:text="Student Name"
+                        />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/studentName"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:fontFamily="@font/medium"
+                        android:textSize="18sp"
+                        android:textColor="@color/DarkRed"
+                        android:text="Rutuj Bokade"
+                        android:background="?selectableItemBackground"
+                        android:maxLines="3"
+                        android:singleLine="false"
+                        android:drawableTop="@drawable/ic_outline_person_outline_24"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="280dp"/>
 
 
 

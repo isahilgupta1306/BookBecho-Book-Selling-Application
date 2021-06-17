@@ -132,8 +132,6 @@ public class home_fragment extends Fragment {
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("Products"), productDataModel.class)
                         .build();
 
-
-
         adapter = new productAdapterRV(prodData);
         recyclerView.setAdapter(adapter);
 

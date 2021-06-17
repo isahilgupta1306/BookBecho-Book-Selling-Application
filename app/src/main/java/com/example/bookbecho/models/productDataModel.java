@@ -6,7 +6,7 @@ public class productDataModel {
     String description;
     String price;
     String photo;
-    String user;
+    String user; //this denotes the user uid of the person who posted the product
     String sold;
 
     public String getProdID() {
