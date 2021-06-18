@@ -93,7 +93,7 @@ public class SpecificChat extends AppCompatActivity {
         recieverroom= recieveruid+senderuid;
 
 
-        DatabaseReference databaseReference = firebaseDatabase.getReference().child("chats").child(senderroom).child("messages");
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("Chats").child(senderroom).child("messages");
         messagesAdapter = new MessagesAdapter(SpecificChat.this, messagesArrayList);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
