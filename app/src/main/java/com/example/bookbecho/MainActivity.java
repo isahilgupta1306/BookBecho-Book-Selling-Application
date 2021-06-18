@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.bookbecho.fragments.ChatFragment;
 import com.example.bookbecho.fragments.addProductForm;
 import com.example.bookbecho.fragments.cart;
 import com.example.bookbecho.fragments.home_fragment;
@@ -77,6 +78,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.productHistory:
                          tempFrag = new myOrders();    //for adding new fragPiece
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout , tempFrag).commit();
+                        break;
+                    case R.id.chatHistory:
+                        tempFrag = new ChatFragment();    //for adding new fragPiece
                         drawerLayout.closeDrawer(GravityCompat.START);
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout , tempFrag).commit();
                         break;

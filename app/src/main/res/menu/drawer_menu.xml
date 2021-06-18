@@ -11,6 +11,11 @@
         android:icon="@drawable/ic_shopping_bag"
         />
     <item
+        android:id="@+id/chatHistory"
+        android:title="Chats"
+        android:icon="@drawable/ic_baseline_chat_24"
+        />
+    <item
         android:id="@+id/logout"
         android:title="LogOut"
         android:icon="@drawable/ic_baseline_exit_to_app_24"

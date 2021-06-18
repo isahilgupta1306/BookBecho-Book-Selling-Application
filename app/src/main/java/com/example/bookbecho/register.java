@@ -12,11 +12,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bookbecho.models.UserModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class register extends AppCompatActivity {
 
@@ -24,6 +28,8 @@ public class register extends AppCompatActivity {
     Button register;
     FirebaseAuth fAuth;
     TextView gotologin;
+//    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
 
 
 
@@ -87,6 +93,8 @@ public class register extends AppCompatActivity {
                     return;
                 }
 
+
+
                 //DATA IS VALIDATED
                 Toast.makeText(register.this, "Data validated", Toast.LENGTH_SHORT).show();
 
@@ -102,6 +110,7 @@ public class register extends AppCompatActivity {
                                 //startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                 //finish();
                                 Toast.makeText(register.this, "you are verified", Toast.LENGTH_SHORT).show();
+
                             }
                             else{
                                 user.sendEmailVerification();
@@ -109,6 +118,13 @@ public class register extends AppCompatActivity {
                             }
 //                        Intent i1 = new Intent(register.this, login.class);
 //                        startActivity(i1);
+
+                        String uuid = fAuth.getCurrentUser().getUid();
+
+                        UserModel userModel = new UserModel(fullName,uuid);
+                        DocumentReference documentReference = firebaseFirestore.collection("Users").document(uuid);
+                        documentReference.set(userModel);
+//                        firebaseDatabase.getReference().child("Users").push().setValue(userModel);
 
                         }
 
