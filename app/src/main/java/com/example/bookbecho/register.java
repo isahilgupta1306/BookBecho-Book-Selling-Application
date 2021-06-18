@@ -76,6 +76,7 @@ public class register extends AppCompatActivity {
                 String email = emailid.getText().toString();
                 String password = passcode.getText().toString();
                 String confpassword = confirmpassword.getText().toString();
+                String collegeName = collegename.getText().toString();
 
                 //DATA VALIDATION
 
@@ -102,6 +103,11 @@ public class register extends AppCompatActivity {
                 if(!password.equals(confpassword))
                 {
                     confirmpassword.setError("Passwords Do not match");
+                    return;
+                }
+                if(collegeName.isEmpty())
+                {
+                    collegename.setError("Passwords Do not match");
                     return;
                 }
 
@@ -133,10 +139,11 @@ public class register extends AppCompatActivity {
 
                         String uuid = fAuth.getCurrentUser().getUid();
 
-                        UserModel userModel = new UserModel(fullName,uuid);
+                        UserModel userModel = new UserModel(fullName,uuid,collegeName);
                         DocumentReference documentReference = firebaseFirestore.collection("Users").document(uuid);
                         documentReference.set(userModel);
-//                        firebaseDatabase.getReference().child("Users").push().setValue(userModel);
+
+//
 
                         }
 

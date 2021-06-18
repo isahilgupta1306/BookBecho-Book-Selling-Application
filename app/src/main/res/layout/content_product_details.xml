@@ -152,10 +152,12 @@
                     >
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="160dp"
                         android:src="@drawable/ic_university"
                         android:layout_gravity="center"
-                        android:layout_margin="20dp"/>
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="1dp"/>
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -193,10 +195,12 @@
                     >
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="160dp"
                         android:src="@drawable/ic_student"
                         android:layout_gravity="center"
-                        android:layout_margin="20dp"/>
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="1dp"/>
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

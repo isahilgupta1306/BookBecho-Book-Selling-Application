@@ -21,6 +21,11 @@
         android:fontStyle="normal"
         android:fontWeight="100"
         android:font="@font/light" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="100"
+        android:font="@font/new_bold_font" />
+
 
 
 
