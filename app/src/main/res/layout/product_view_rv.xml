@@ -9,6 +9,7 @@
     android:clickable="true"
     android:focusable="true"
     android:elevation="20dp"
+    android:background="?selectableItemBackground"
     app:cardCornerRadius="10dp"
     android:layout_marginTop="5dp"
     android:layout_marginLeft="10dp"
