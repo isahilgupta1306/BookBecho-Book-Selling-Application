@@ -95,6 +95,7 @@ public class SpecificChat extends AppCompatActivity {
 
         DatabaseReference databaseReference = firebaseDatabase.getReference().child("Chats").child(senderroom).child("messages");
         messagesAdapter = new MessagesAdapter(SpecificChat.this, messagesArrayList);
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -144,11 +145,11 @@ public class SpecificChat extends AppCompatActivity {
                     });
 
                 }
+                getmessage.setText(null);
 
             }
         });
 
-        getmessage.setText(null);
 
     }
 

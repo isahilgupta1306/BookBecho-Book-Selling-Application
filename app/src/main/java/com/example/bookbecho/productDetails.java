@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
+import com.example.bookbecho.models.productDataModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
@@ -36,6 +37,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
 
 public class productDetails extends AppCompatActivity {
 
@@ -136,8 +139,12 @@ public class productDetails extends AppCompatActivity {
     }
 
     private void buynow(String key){
-        String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        database.child(key).child("sold").setValue(currentuser);
+        String uuid = FirebaseAuth.getInstance().getUid();
+        productDataModel productModel = new productDataModel(productTitle, productDescription,productPrice, productImageUrl, productOwner, uuid);
+        FirebaseDatabase.getInstance().getReference().child("Orders").child(uuid).push().setValue(productModel);
+
+        FirebaseDatabase.getInstance().getReference().child("Added-Products").child(productOwner).push().setValue(productModel);
+        FirebaseDatabase.getInstance().getReference().child("Products").child(key).removeValue();
     }
 
     private void setDatainUI(String productOwner){
