@@ -3,6 +3,7 @@ package com.example.bookbecho.fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,8 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.bookbecho.R;
 import com.example.bookbecho.adapters.productAdapterRV;
@@ -31,10 +34,7 @@ public class home_fragment extends Fragment {
 
 
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.options_menu, menu);
-    }
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,7 +50,30 @@ public class home_fragment extends Fragment {
     String dummyString;
     productAdapterRV adapter;
     LinearLayoutManager linearLayoutManager;
+    SearchView searchView , newsearchView;
 
+
+
+    @Override
+    public void onCreateOptionsMenu( @NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.options_menu, menu);
+//        MenuItem item = menu.findItem(R.id.search);
+//         searchView = (SearchView) item.getActionView();
+//         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//             @Override
+//             public boolean onQueryTextSubmit(String query) {
+//                 processSearch(query);
+//                 return false;
+//             }
+//
+//             @Override
+//             public boolean onQueryTextChange(String newText) {
+//                 processSearch(newText);
+//                 return false;
+//             }
+//         });
+
+    }
     @Override
     public void onStop() {
         super.onStop();
@@ -61,6 +84,7 @@ public class home_fragment extends Fragment {
         super.onStart();
         adapter.startListening();
     }
+
 
 
     public home_fragment() {
@@ -108,24 +132,6 @@ public class home_fragment extends Fragment {
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        //initializing new dummy model
-
-//        productDataModel obj1 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
-//        productDataHolder.add(obj1);
-//
-//        productDataModel obj2 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
-//        productDataHolder.add(obj2);
-//
-//        productDataModel obj3 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
-//        productDataHolder.add(obj3);
-//
-//        productDataModel obj4 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
-//        productDataHolder.add(obj4);
-//
-//        productDataModel obj5 = new productDataModel(R.drawable.dummy_book , "HC Verma" , dummyString , "250");
-//        productDataHolder.add(obj5);
-
-
 
         FirebaseRecyclerOptions<productDataModel> prodData =
                 new FirebaseRecyclerOptions.Builder<productDataModel>()
@@ -135,10 +141,37 @@ public class home_fragment extends Fragment {
         adapter = new productAdapterRV(prodData);
         recyclerView.setAdapter(adapter);
 
+        //for Search Module
+        newsearchView = (SearchView)view.findViewById(R.id.new_search);
+        newsearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                processSearch(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                processSearch(newText);
+                return false;
+            }
+        });
 
         return view;
 
     }
+    private void processSearch(String query){
+        FirebaseRecyclerOptions<productDataModel> prodData =
+                new FirebaseRecyclerOptions.Builder<productDataModel>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Products")
+                                .orderByChild("title").startAt(query).endAt(query + "\uf8ff" ), productDataModel.class)
+                        .build();
+
+        adapter = new productAdapterRV(prodData);
+        adapter.startListening();
+        recyclerView.setAdapter(adapter);
+    }
+
 
 
 
