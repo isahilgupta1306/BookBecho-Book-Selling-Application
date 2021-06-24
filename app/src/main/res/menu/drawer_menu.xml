@@ -11,6 +11,10 @@
         android:icon="@drawable/ic_shopping_bag"
         />
     <item
+        android:id="@+id/myProducts"
+        android:title="My Products"
+        android:icon="@drawable/ic_cart"/>
+    <item
         android:id="@+id/chatHistory"
         android:title="Chats"
         android:icon="@drawable/ic_chat"

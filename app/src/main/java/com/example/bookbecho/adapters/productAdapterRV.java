@@ -37,7 +37,6 @@ import java.util.ArrayList;
 
 public class productAdapterRV extends FirebaseRecyclerAdapter< productDataModel,productAdapterRV.myViewHolder> {
     public String nodeKey;
-    FragmentManager fragmentManager;
     DatabaseReference firebaseDatabaseref;
     public String soldStatus ;
 
@@ -97,13 +96,7 @@ public class productAdapterRV extends FirebaseRecyclerAdapter< productDataModel,
                 holder.cardView.getContext().startActivity(intent);
             }
         });
-//        nodeKey = getRef(position).getKey();
-//        Bundle data = new Bundle();
-//        data.putString("nodeKey", nodeKey );
-//        // set Fragmentclass Arguments
-//        cart fragobj = new cart();
-//        fragobj.setArguments(data);
-//        CODE FOR SENDING DATA TO FRAGMENT
+
     }
 
 
