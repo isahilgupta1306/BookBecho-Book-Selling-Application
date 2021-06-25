@@ -143,7 +143,6 @@ public class productDetails extends AppCompatActivity {
         productDataModel productModel = new productDataModel(productTitle, productDescription,productPrice, productImageUrl, productOwner, uuid);
         FirebaseDatabase.getInstance().getReference().child("Orders").child(uuid).push().setValue(productModel);
 
-        FirebaseDatabase.getInstance().getReference().child("Added-Products").child(productOwner).push().setValue(productModel);
         FirebaseDatabase.getInstance().getReference().child("Products").child(key).removeValue();
     }
 
