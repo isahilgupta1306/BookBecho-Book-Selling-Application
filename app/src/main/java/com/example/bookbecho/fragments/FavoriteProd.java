@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.bookbecho.R;
-import com.example.bookbecho.adapters.myProductsAdapter;
-import com.example.bookbecho.adapters.orderAdapter;
+import com.example.bookbecho.adapters.FavoritesAdapter;
+import com.example.bookbecho.adapters.productAdapterRV;
 import com.example.bookbecho.models.productDataModel;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,10 +20,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link myProducts#newInstance} factory method to
+ * Use the {@link FavoriteProd#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class myProducts extends Fragment {
+public class FavoriteProd extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,9 +33,10 @@ public class myProducts extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    RecyclerView recyclerView ;
+    RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
-    myProductsAdapter adapter;
+    FavoritesAdapter adapter;
+
 
     @Override
     public void onStop() {
@@ -48,7 +49,7 @@ public class myProducts extends Fragment {
         adapter.startListening();
     }
 
-    public myProducts() {
+    public FavoriteProd() {
         // Required empty public constructor
     }
 
@@ -58,11 +59,11 @@ public class myProducts extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment myProducts.
+     * @return A new instance of fragment FavoriteProd.
      */
     // TODO: Rename and change types and number of parameters
-    public static myProducts newInstance(String param1, String param2) {
-        myProducts fragment = new myProducts();
+    public static FavoriteProd newInstance(String param1, String param2) {
+        FavoriteProd fragment = new FavoriteProd();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -82,10 +83,10 @@ public class myProducts extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        String uuid = FirebaseAuth.getInstance().getUid();
+        String uid = FirebaseAuth.getInstance().getUid();
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_my_products, container, false);
-        recyclerView = view.findViewById(R.id.myprod);
+        View view = inflater.inflate(R.layout.fragment_favorite_prod, container, false);
+        recyclerView = view.findViewById(R.id.favorites_rv);
         linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
@@ -93,11 +94,15 @@ public class myProducts extends Fragment {
 
         FirebaseRecyclerOptions<productDataModel> prodData =
                 new FirebaseRecyclerOptions.Builder<productDataModel>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Added-Products").child(uuid), productDataModel.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Favorites").child(uid), productDataModel.class)
                         .build();
 
-        adapter = new myProductsAdapter(prodData);
+        adapter = new FavoritesAdapter(prodData);
         recyclerView.setAdapter(adapter);
+
+
+
+
         return view;
     }
 }

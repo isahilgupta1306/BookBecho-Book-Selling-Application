@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.bookbecho.MainActivity;
 import com.example.bookbecho.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -137,10 +138,9 @@ public class addProductForm extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog = new ProgressDialog(getContext());
-                progressDialog.show();
-                progressDialog.setContentView(R.layout.progress_layout);
-                payUsingUpi(UPIID.toString());
+
+                validateProduct();
+//                payUsingUpi(UPIID.toString());
 
             }
         });
@@ -206,7 +206,6 @@ public class addProductForm extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         upiid = UPIID.getText().toString();
         String userId = user.getUid();
-
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
         String format = simpleDateFormat.format(new Date());
         prodId = format;
@@ -216,6 +215,9 @@ public class addProductForm extends Fragment {
         } else if(TextUtils.isEmpty(description) || TextUtils.isEmpty(title) ||TextUtils.isEmpty(price)){
             Toast.makeText(getContext(), "Each field is mandatory", Toast.LENGTH_SHORT).show();
         } else {
+            progressDialog = new ProgressDialog(getContext());
+            progressDialog.show();
+            progressDialog.setContentView(R.layout.progress_layout);
             StorageReference ImageName = folder.child("image"+ imageUri.getLastPathSegment());
 
             ImageName.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -225,6 +227,9 @@ public class addProductForm extends Fragment {
                     ImageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
+                            progressDialog = new ProgressDialog(getContext());
+                            progressDialog.show();
+                            progressDialog.setContentView(R.layout.progress_layout);
                             imageStorageUrl = String.valueOf(uri);
                             HashMap<String, String> prodMap = new HashMap<>();
                             prodMap.put("title", title);
@@ -239,8 +244,9 @@ public class addProductForm extends Fragment {
                             root.push().setValue(prodMap);
                             FirebaseDatabase.getInstance().getReference().child("Added-Products").child(userId).push().setValue(prodMap);
                             progressDialog.dismiss();
-
-                            Toast.makeText(getContext(), "Product uploaded successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Product Listed successfully", Toast.LENGTH_SHORT).show();
+                            Intent i1 = new Intent(getContext() , MainActivity.class);
+                            startActivity(i1);
                         }
                     });
 

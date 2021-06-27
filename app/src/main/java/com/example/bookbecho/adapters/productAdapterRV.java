@@ -85,14 +85,13 @@ public class productAdapterRV extends FirebaseRecyclerAdapter< productDataModel,
         holder.productDescription.setText(model.getDescription());
         holder.productTitle.setText(model.getTitle());
         Glide.with(holder.productImage.getContext()).load(model.getPhoto()).into(holder.productImage);
-
-
-
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent( holder.cardView.getContext(), productDetails.class);
                 intent.putExtra("key" , getRef(position).getKey());
+                intent.putExtra("signal" , "0");
+
                 holder.cardView.getContext().startActivity(intent);
             }
         });

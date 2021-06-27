@@ -46,7 +46,6 @@ public class home_fragment extends Fragment {
     private String mParam2;
     //My Declarations
     RecyclerView recyclerView;
-    ArrayList<productDataModel> productDataHolder;
     String dummyString;
     productAdapterRV adapter;
     LinearLayoutManager linearLayoutManager;

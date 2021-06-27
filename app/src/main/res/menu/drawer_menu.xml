@@ -20,6 +20,11 @@
         android:icon="@drawable/ic_chat"
         />
     <item
+        android:id="@+id/favorites"
+        android:title="Favorites"
+        android:icon="@drawable/ic_sharp_favorite_border_24"
+        />
+    <item
         android:id="@+id/logout"
         android:title="LogOut"
         android:icon="@drawable/ic_baseline_exit_to_app_24"

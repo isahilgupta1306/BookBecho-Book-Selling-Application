@@ -18,6 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.bookbecho.fragments.ChatFragment;
+import com.example.bookbecho.fragments.FavoriteProd;
 import com.example.bookbecho.fragments.addProductForm;
 import com.example.bookbecho.fragments.cart;
 import com.example.bookbecho.fragments.home_fragment;
@@ -109,6 +110,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.myProducts:
                         tempFrag = new myProducts();    //for adding new fragPiece
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout , tempFrag).commit();
+                        break;
+                    case R.id.favorites:
+                        tempFrag = new FavoriteProd();    //for adding new fragPiece
                         drawerLayout.closeDrawer(GravityCompat.START);
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout , tempFrag).commit();
                         break;
