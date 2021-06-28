@@ -62,6 +62,8 @@ public class addProductForm extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    public String collegeName;
+    public String sellerName;
 
     public addProductForm() {
         // Required empty public constructor
@@ -106,6 +108,7 @@ public class addProductForm extends Fragment {
     String imageStorageUrl = null;
     ProgressDialog progressDialog;
     String title, description, price, upiid;
+    FirebaseFirestore firestoreDb;
     final int UPI_PAYMENT = 0;
 
 
@@ -120,11 +123,13 @@ public class addProductForm extends Fragment {
         productPhoto = view.findViewById(R.id.product_photo);
         upload = view.findViewById(R.id.add_product_photo);
         submit = view.findViewById(R.id.submit);
-
         prodTitle = view.findViewById(R.id.prod_title);
         prodDesc = view.findViewById(R.id.prod_desc);
         prodPrice = view.findViewById(R.id.price);
         UPIID = view.findViewById(R.id.gpay_input);
+
+        //getting UID
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,6 +139,7 @@ public class addProductForm extends Fragment {
                 startActivityForResult(intent, ImageBack);
             }
         });
+        setData(user.getUid());
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,6 +150,7 @@ public class addProductForm extends Fragment {
 
             }
         });
+
 
         return view;
     }
@@ -220,6 +227,8 @@ public class addProductForm extends Fragment {
             progressDialog.setContentView(R.layout.progress_layout);
             StorageReference ImageName = folder.child("image"+ imageUri.getLastPathSegment());
 
+
+
             ImageName.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -240,6 +249,8 @@ public class addProductForm extends Fragment {
                             prodMap.put("sold", "null");
                             prodMap.put("prodID", prodId);
                             prodMap.put("upiid", upiid);
+                            prodMap.put("collegeName" , collegeName);
+                            prodMap.put("sellerName" , sellerName);
 
                             root.push().setValue(prodMap);
                             FirebaseDatabase.getInstance().getReference().child("Added-Products").child(userId).push().setValue(prodMap);
@@ -258,6 +269,27 @@ public class addProductForm extends Fragment {
     }
 
 
+    private void setData(String productOwner){
+        DocumentReference docRef = firestoreDb.collection("Users").document(productOwner);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        collegeName = document.getString("collegeName");
+                        sellerName = document.getString("username");
+
+
+                    } else {
+                        Log.d("doc" , "document doesnt exists");
+                    }
+                } else {
+
+                }
+            }
+        });
+    }
     void payUsingUpi(String upiId){
 
 

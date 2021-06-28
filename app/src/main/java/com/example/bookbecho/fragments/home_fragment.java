@@ -145,13 +145,13 @@ public class home_fragment extends Fragment {
         newsearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                processSearch(query);
+                processSearchTitle(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                processSearch(newText);
+                processSearchTitle(newText);
                 return false;
             }
         });
@@ -159,7 +159,7 @@ public class home_fragment extends Fragment {
         return view;
 
     }
-    private void processSearch(String query){
+    private void processSearchTitle(String query){
         FirebaseRecyclerOptions<productDataModel> prodData =
                 new FirebaseRecyclerOptions.Builder<productDataModel>()
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("Products")
@@ -170,6 +170,19 @@ public class home_fragment extends Fragment {
         adapter.startListening();
         recyclerView.setAdapter(adapter);
     }
+    private void processSearchCollege(String query){
+        FirebaseRecyclerOptions<productDataModel> prodData =
+                new FirebaseRecyclerOptions.Builder<productDataModel>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Products")
+                                .orderByChild("title").startAt(query).endAt(query + "\uf8ff" ), productDataModel.class)
+                        .build();
+
+        adapter = new productAdapterRV(prodData);
+        adapter.startListening();
+        recyclerView.setAdapter(adapter);
+    }
+
+
 
 
 

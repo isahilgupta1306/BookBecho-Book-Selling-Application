@@ -106,6 +106,7 @@ public class productDetails extends AppCompatActivity {
             public void onClick(View v) {
                 setAddToFav(key);
             }
+
         });
 
 
@@ -189,6 +190,7 @@ public class productDetails extends AppCompatActivity {
         });
     }
     private void setAddToFav(String key){
+        Toast.makeText(getApplicationContext() , "Added To Favorites", Toast.LENGTH_LONG);
        database = FirebaseDatabase.getInstance().getReference();
 //        database.child(key).addValueEventListener(new ValueEventListener() {
 //            @Override
@@ -209,16 +211,17 @@ public class productDetails extends AppCompatActivity {
 //
 //            }
 //        });
-        String uuid = FirebaseAuth.getInstance().getUid();
+        String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         productDataModel productModel = new productDataModel(productTitle, productDescription,productPrice, productImageUrl, productOwner, uuid);
         FirebaseDatabase.getInstance().getReference().child("Favorites").child(uuid).push().setValue(productModel);
+
+
     }
 
     private void buynow(String key){
         String uuid = FirebaseAuth.getInstance().getUid();
         productDataModel productModel = new productDataModel(productTitle, productDescription,productPrice, productImageUrl, productOwner, uuid);
         FirebaseDatabase.getInstance().getReference().child("Orders").child(uuid).push().setValue(productModel);
-
         FirebaseDatabase.getInstance().getReference().child("Products").child(key).removeValue();
     }
 
