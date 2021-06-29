@@ -1,6 +1,7 @@
 package com.example.bookbecho;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
@@ -56,7 +57,6 @@ public class productDetails extends AppCompatActivity {
 
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +91,33 @@ public class productDetails extends AppCompatActivity {
 
 
 
+        chatWithSeller.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SpecificChat.class);
+                DocumentReference docRef = db.collection("Users").document(productOwner);
+                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                       @Override
+                       public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
+                           if (task.isSuccessful()) {
+                               DocumentSnapshot document = task.getResult();
+                               if (document.exists()) {
+                                   studentName = document.getString("username");
+                                   Log.d("methodCheck" , "text +" + studentName);
+                                   intent.putExtra("username", studentName);
+                                   intent.putExtra("receiveruid",productOwner);
+                                   startActivity(intent);
+                               } else {
+                                   Log.d("doc" , "document doesnt exists");
+                               }
+                           } else {
+                               Log.d("doc" , "task unsuccesful");
+                           }
+                       }
+                   });
 
+            }
+        });
 
 
         buyNow.setOnClickListener(new View.OnClickListener() {
